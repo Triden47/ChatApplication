@@ -1,5 +1,12 @@
+//components
+import Messenger from './components/Messenger'
+
 function App() {
-    return <div></div>;
+    return (
+      <div>
+        <Messenger />
+      </div>
+    )
 }
 
 export default App;
