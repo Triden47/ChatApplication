@@ -9,9 +9,10 @@ import { AccountContext } from '../../context/AccountProvider';
 const Login = () => {
     const clientID = "570000585992-v1d6cd3chgijl6qasmkq4oente3e5cbi.apps.googleusercontent.com"
 
-    const { account, setAccount } = useContext(AccountContext)
+    const { setAccount } = useContext(AccountContext)
     const handleSuccess = (res) => {
         setAccount(res.profileObj)
+        // console.log(account)
     }
     const handleFailure = (res) => {
         console.log(res)

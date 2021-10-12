@@ -5,6 +5,7 @@ export const AccountContext = createContext(null)
 const AccountProvider = ({ children }) => {
 
     const [account, setAccount] = useState()
+    console.log(account)
     return (
         <AccountContext.Provider value={{
             account,

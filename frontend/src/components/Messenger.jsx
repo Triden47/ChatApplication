@@ -1,17 +1,22 @@
 import React from 'react'
 
-import Login from './account/Login'
 import {Card, Carousel } from 'react-bootstrap'
-//Components
 import GoogleIcon from '@mui/icons-material/Google';
+
+//Components
+import Login from './account/Login'
+
 import '../css/homePage.css'
 // import Monitor from '../images/monitor.png'
+
+
 
 const cardStyle = {
     width: "25rem",
     border: "none",
     boxShadow: "0 0 0 5px #1F6F8B",
 }
+
 const Messenger = () => {
     return (
         <>
