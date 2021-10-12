@@ -1,0 +1,15 @@
+.chat-box {
+    display: flex;
+    min-width: 700px;
+    /* margin: 25px; */
+}
+
+.chat-people {
+    flex-grow: 1;
+    flex-basis: 350px;
+}
+
+.chat-messages {
+    flex-grow: 4;
+    flex-basis: 350px;
+}
