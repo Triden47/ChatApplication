@@ -1,0 +1,62 @@
+.home {
+    display: flex;
+    /* padding: 5%; */
+    flex-direction: column;
+    height: 100vh;
+}
+
+.home-part1 {
+    flex: 1;
+    background-color: #1F6F8B;
+
+}
+.home-part1 div {
+    margin-left: 7.5%;
+}
+.home-part1 h1 {
+    display: inline;
+    /* color: white; */
+    font-size: 7rem;
+
+}
+
+.home-part2 {
+    flex: 1.5;
+    background-color: #F1F6F9;
+}
+
+.home-part2 > div {
+    margin: 7.5%;
+}
+
+.login {
+    position: absolute;
+    top: 12.5%;
+    right: 10%;
+    width: 35%;
+    height: 70%;
+    background-color: white;
+}
+/* 
+.pc-img {
+    width: 25%
+} */
+
+.login {
+    padding: 5%;
+    text-align: center;
+}
+
+.login button {
+    margin-top: 15%;
+    font-size: 1.5rem;
+    padding: 0 5% 0 0;
+    padding-left: 12%;
+    position: relative;
+}
+.login img {
+    position: absolute;
+    top: auto;
+    left: 0;
+    background-color: white;
+}
