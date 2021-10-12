@@ -1,7 +1,11 @@
 
+import Header from "./Header"
+
 const Menu = () => {
     return (
-        <p>Hello</p>
+        <>
+            <Header/>
+        </>
     )
 }
 

@@ -2,14 +2,42 @@
     display: flex;
     min-width: 700px;
     /* margin: 25px; */
+    height: 100vh;
 }
 
 .chat-people {
     flex-grow: 1;
     flex-basis: 350px;
+    border-right: 1px solid grey;
 }
 
 .chat-messages {
     flex-grow: 4;
     flex-basis: 350px;
+}
+
+.header {
+    background-color: grey;
+    display: flex;
+    padding: 10px 0 10px 15px;
+}
+
+.header-part1 {
+    flex: 5;
+}
+
+.header-part1 img {
+    border-radius: 100%;
+    width: 50px;
+}
+
+.header-part2 {
+    flex: 2;
+    /* margin-right: auto; */
+}
+
+.header-part2 .MuiFab-root {
+    margin: 8px;
+    background-color: grey;
+    box-shadow: none;
 }
