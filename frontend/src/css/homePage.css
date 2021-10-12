@@ -11,8 +11,7 @@
 
 }
 .home-part1 div {
-    margin-left: 10%;
-    margin-top: 3%;
+    margin-left: 7.5%;
 }
 .home-part1 h1 {
     display: inline;
@@ -23,12 +22,41 @@
 
 .home-part2 {
     flex: 1.5;
-    /* margin: 5%; */
+    background-color: #082032;
 }
 
-.home-part2 div {
-    /* display: inline; */
-    margin: 10%;
-    width: 25%;
+.home-part2 > div {
+    margin: 7.5%;
+}
+
+.login {
+    position: absolute;
+    top: 12.5%;
+    right: 10%;
+    width: 35%;
+    height: 70%;
+    background-color: white;
+}
+/* 
+.pc-img {
+    width: 25%
+} */
+
+.login {
+    padding: 5%;
     text-align: center;
+}
+
+.login button {
+    margin-top: 15%;
+    font-size: 1.5rem;
+    padding: 0 5% 0 0;
+    padding-left: 12%;
+    position: relative;
+}
+.login img {
+    position: absolute;
+    top: auto;
+    left: 0;
+    background-color: white;
 }

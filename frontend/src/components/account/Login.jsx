@@ -1,32 +1,14 @@
-import { Dialog, Backdrop, Box, Typography } from "@mui/material";
-import { styled } from "@mui/system";
-
+import { Button } from 'react-bootstrap'
+import Monitor from '../../images/monitor.png'
+import GoogleIcon from '@mui/icons-material/Google';
+import GoogleLogo from '../../images/Google.png'
 const Login = () => {
     return (
-        // <h1>Login</h1> 
-        // <Dialog
-        //     open={true}
-        //     sx={{
-        //         "& .MuiDialog-paper": {
-        //             boxShadow: "none",
-        //             height: "80%",
-        //             width: "80%",
-        //             position: "relative",
-        //             left: "20%"
-
-        //         },
-        //     }}
-        //     BackdropComponent={styled(Backdrop, {
-        //         name: "MuiModal",
-        //         slot: "Backdrop",
-        //         overridesResolver: (props, styles) => {
-        //             return styles.backdrop;
-        //         },
-        //     })({ zIndex: -1, backgroundColor: "unset" })}
-        // >
-        // </Dialog>
-        <div>
-            
+        <div className="login">
+            <h2>Lets get started</h2>
+            <Button> 
+                <img src={GoogleLogo} alt="None" style={{ width: 35 }}/>
+                Sign in with Google</Button>
         </div>
     );
 };
