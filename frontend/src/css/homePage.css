@@ -7,7 +7,7 @@
 
 .home-part1 {
     flex: 1;
-    background-color: aliceblue;
+    background-color: #1F6F8B;
 
 }
 .home-part1 div {
@@ -15,14 +15,14 @@
 }
 .home-part1 h1 {
     display: inline;
-
+    /* color: white; */
     font-size: 7rem;
 
 }
 
 .home-part2 {
     flex: 1.5;
-    background-color: #082032;
+    background-color: #F1F6F9;
 }
 
 .home-part2 > div {

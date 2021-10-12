@@ -10,7 +10,7 @@ import '../css/homePage.css'
 const cardStyle = {
     width: "25rem",
     border: "none",
-    boxShadow: "0 0 0 5px aliceblue",
+    boxShadow: "0 0 0 5px #1F6F8B",
 }
 const Messenger = () => {
     return (
@@ -18,7 +18,7 @@ const Messenger = () => {
             <div className="home">
                 <div className="home-part1">
                     <div>
-                        <GoogleIcon sx={{ fontSize: "10rem"}}/>
+                        <GoogleIcon sx={{ fontSize: "10rem" }}/>
                     <h1>EXT</h1>
                     </div>
                     
@@ -26,7 +26,7 @@ const Messenger = () => {
                 <div className="home-part2">
                 {/* <img className="pc-img" src={Monitor} alt="None"/> */}
                     <Card className="text-center" style={ cardStyle }>
-                        <Card.Header style={{ background: "aliceblue", border: "aliceblue solid" }}>Why Gext?</Card.Header>
+                        <Card.Header style={{ background: "#1F6F8B", border: "#1F6F8B solid" }}>Why Gext?</Card.Header>
                         <Card.Body>
                             <Carousel 
                             controls={false}
