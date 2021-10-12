@@ -1,26 +1,34 @@
-import { Dialog, Backdrop, Box, Typography } from "@mui/material"
+import { Dialog, Backdrop, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 const Login = () => {
     return (
-        <Dialog 
-            open={ true }
+        // <h1>Login</h1> 
+        // <Dialog
+        //     open={true}
+        //     sx={{
+        //         "& .MuiDialog-paper": {
+        //             boxShadow: "none",
+        //             height: "80%",
+        //             width: "80%",
+        //             position: "relative",
+        //             left: "20%"
 
-            sx={{
-                '& .MuiDialog-paper': {
-                    boxShadow: 'none',
-                    height: '100%',
-                    width: '100%',
-                }
-            }}
-
-            BackdropComponent={styled(Backdrop, { name: 'MuiModal', slot: 'Backdrop', overridesResolver: (props, styles) => { return styles.backdrop; }, })({ zIndex: -1, 
-            backgroundColor: "unset" })}
+        //         },
+        //     }}
+        //     BackdropComponent={styled(Backdrop, {
+        //         name: "MuiModal",
+        //         slot: "Backdrop",
+        //         overridesResolver: (props, styles) => {
+        //             return styles.backdrop;
+        //         },
+        //     })({ zIndex: -1, backgroundColor: "unset" })}
+        // >
+        // </Dialog>
+        <div>
             
-        >
-            Hello
-        </Dialog>
-    )
-}
+        </div>
+    );
+};
 
-export default Login
+export default Login;

@@ -1,0 +1,34 @@
+.home {
+    display: flex;
+    /* padding: 5%; */
+    flex-direction: column;
+    height: 100vh;
+}
+
+.home-part1 {
+    flex: 1;
+    background-color: aliceblue;
+
+}
+.home-part1 div {
+    margin-left: 10%;
+    margin-top: 3%;
+}
+.home-part1 h1 {
+    display: inline;
+
+    font-size: 7rem;
+
+}
+
+.home-part2 {
+    flex: 1.5;
+    /* margin: 5%; */
+}
+
+.home-part2 div {
+    /* display: inline; */
+    margin: 10%;
+    width: 25%;
+    text-align: center;
+}
