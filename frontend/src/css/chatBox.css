@@ -44,4 +44,5 @@
 
 .header-part2 .MuiFab-root:hover {
     background-color: #20647d;
+    box-shadow: none;
 }
