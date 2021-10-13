@@ -7,7 +7,7 @@ import { GoogleLogin } from 'react-google-login'
 import { AccountContext } from '../../context/AccountProvider';
 
 const Login = () => {
-    const clientID = "570000585992-v1d6cd3chgijl6qasmkq4oente3e5cbi.apps.googleusercontent.com"
+    const clientID = process.env.REACT_APP_GOOGLE_ID
 
     const { setAccount } = useContext(AccountContext)
     const handleSuccess = (res) => {
@@ -27,7 +27,7 @@ const Login = () => {
                 onFailure={handleFailure}
                 cookiePolicy={'single_host_origin'}
                 // theme="dark"
-                style={{ backgroundColor: "blue" }}
+                // style={{ backgroundColor: "blue" }}
             />
             {/* <Button> 
                 <img src={GoogleLogo} alt="None" style={{ width: 35 }}/>

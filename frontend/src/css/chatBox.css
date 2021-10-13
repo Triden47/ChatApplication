@@ -17,7 +17,7 @@
 }
 
 .header {
-    background-color: grey;
+    background-color: #1F6F8B;
     display: flex;
     padding: 10px 0 10px 15px;
 }
@@ -37,7 +37,11 @@
 }
 
 .header-part2 .MuiFab-root {
-    margin: 8px;
-    background-color: grey;
+    margin: 5px 10px;
+    background-color: #1F6F8B;
     box-shadow: none;
+}
+
+.header-part2 .MuiFab-root:hover {
+    background-color: #20647d;
 }
