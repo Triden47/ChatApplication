@@ -5,7 +5,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { AccountContext } from '../../context/AccountProvider';
 import { GoogleLogout } from 'react-google-login';
-import TemporaryDrawer from './Profile';
+import { DrawerContext } from '../../context/DrawerProvider';
+// import TemporaryDrawer from './Profile';
 // import { compose } from '@mui/system';
 
 const Header = () => {
@@ -28,26 +29,14 @@ const Header = () => {
         setAccount('')
     }
 
-    const [ imgClick, setImgClick ] = useState(false)
-    function onImgClick(event) {
-        if (
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            return;
-        } else {
-            setImgClick(true)
-        }
-    }
-    function onImgClose() {
-        setImgClick(false)
-    }
+    const { setDrawer } = useContext(DrawerContext)
+
+
     return (
         <div className="header">
             <div className="header-part1">
-                <img onClick={onImgClick} src={ account.imageUrl } alt="Personal Pic"/>
+                <img onClick={() => {setDrawer(true)}} src={ account.imageUrl } alt="Personal Pic"/>
             </div>
-            {imgClick && <TemporaryDrawer open={true} close={onImgClose}/>}
             <div className="header-part2">
                 <Fab size="small">
                     <ChatIcon/>
