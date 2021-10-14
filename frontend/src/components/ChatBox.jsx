@@ -13,7 +13,7 @@ const ChatBox = () => {
             <div className="chat-box">
                 <div className="chat-people">
                     <Menu />
-                    {drawer && <PersistentDrawerLeft/>}
+                    <PersistentDrawerLeft/>
                 </div>
                 <div className="chat-messages">
                     Chat
