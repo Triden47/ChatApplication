@@ -46,3 +46,8 @@
     background-color: #20647d;
     box-shadow: none;
 }
+
+.google-logout {
+    color: white;
+    height: 5%;
+}

@@ -5,6 +5,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { AccountContext } from '../../context/AccountProvider';
 import { GoogleLogout } from 'react-google-login';
+import TemporaryDrawer from './Profile';
 // import { compose } from '@mui/system';
 
 const Header = () => {
@@ -27,12 +28,26 @@ const Header = () => {
         setAccount('')
     }
 
+    const [ imgClick, setImgClick ] = useState(false)
+    function onImgClick(event) {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        } else {
+            setImgClick(true)
+        }
+    }
+    function onImgClose() {
+        setImgClick(false)
+    }
     return (
         <div className="header">
             <div className="header-part1">
-                <img src={ account.imageUrl } alt="Personal Pic"/>
+                <img onClick={onImgClick} src={ account.imageUrl } alt="Personal Pic"/>
             </div>
-
+            {imgClick && <TemporaryDrawer open={true} close={onImgClose}/>}
             <div className="header-part2">
                 <Fab size="small">
                     <ChatIcon/>
@@ -67,11 +82,13 @@ const Header = () => {
                     <MenuItem onClick={handleClose}>Starred</MenuItem>
                     <MenuItem onClick={handleClose}>
                         <GoogleLogout
+                            className="google-logout"
                             clientId={clientID}
                             isSignedIn={true}
                             buttonText="Logout"
+                            // icon={false}
                             onLogoutSuccess={onLogoutSuccess}
-                        ></GoogleLogout>
+                        />
                     </MenuItem>
                 </Menu>
             </div>

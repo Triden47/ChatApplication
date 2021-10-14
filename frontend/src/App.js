@@ -7,7 +7,7 @@ import ChatBox from './components/ChatBox';
 
 const PageChange = () => {
   const { account } = useContext(AccountContext)
-  console.log(account)
+  // console.log(account)
   return (
     <>
       { account ? <ChatBox/> : <Messenger/> }
