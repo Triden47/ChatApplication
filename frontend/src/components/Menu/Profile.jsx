@@ -17,6 +17,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { DrawerContext } from "../../context/DrawerProvider";
+import { AccountContext } from "../../context/AccountProvider";
 
 const drawerWidth = 500;
 
@@ -36,31 +37,18 @@ export default function PersistentDrawerLeft() {
 
     const [open, setOpen] = useState(drawer);
 
-    //   const handleDrawerOpen = () => {
-    //     setOpen(true);
-    //   };
-
     const handleDrawerClose = () => {
         setOpen(false);
         setDrawer(false);
     };
 
+    const { account } = useContext(AccountContext)
+
+    const clientID = process.env.REACT_APP_GOOGLE_ID
+
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />
-            {/* <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar> */}
             <Drawer
                 sx={{
                     width: drawerWidth,
@@ -74,17 +62,24 @@ export default function PersistentDrawerLeft() {
                 anchor="left"
                 open={open}
             >
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === "ltr" ? (
-                            <ChevronLeftIcon />
-                        ) : (
-                            <ChevronRightIcon />
-                        )}
-                    </IconButton>
+                <DrawerHeader sx={{ height: "135px", justifyContent: "start" }}>
+                    <div style={{ position: "relative", top: "35px" }}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === "ltr" ? (
+                                <ChevronLeftIcon />
+                            ) : (
+                                <ChevronRightIcon />
+                            )}
+                        </IconButton>
+                        <h3 style={{ display: "inline", 
+                            position: "relative",
+                            top: "5px",
+                            left: "20px" 
+                        }}>Profile</h3>
+                    </div>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                {/* <List>
                     {["Inbox", "Starred", "Send email", "Drafts"].map(
                         (text, index) => (
                             <ListItem button key={text}>
@@ -99,7 +94,10 @@ export default function PersistentDrawerLeft() {
                             </ListItem>
                         )
                     )}
-                </List>
+                </List> */}
+                <div style={{ display: "flex", height: "40%" }}>
+                    <img style={{ margin: "auto", width: "40%", borderRadius: "100%" }} src={account.imageUrl} alt="Profile Pic"/>
+                </div>
                 <Divider />
                 <List>
                     {["All mail", "Trash", "Spam"].map((text, index) => (

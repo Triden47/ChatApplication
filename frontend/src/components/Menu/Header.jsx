@@ -12,6 +12,8 @@ import { DrawerContext } from '../../context/DrawerProvider';
 const Header = () => {
     const { account, setAccount } = useContext(AccountContext)
 
+    const clientID = process.env.REACT_APP_GOOGLE_ID
+
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -20,8 +22,6 @@ const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const clientID = process.env.REACT_APP_GOOGLE_ID
 
     const onLogoutSuccess = () => {
         alert("You have been logged out successfully")
