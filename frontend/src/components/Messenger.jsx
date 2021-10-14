@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Card, Carousel } from 'react-bootstrap'
+import { Card, Carousel } from 'react-bootstrap'
 import GoogleIcon from '@mui/icons-material/Google';
 
 //Components

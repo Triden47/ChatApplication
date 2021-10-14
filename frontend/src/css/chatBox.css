@@ -1,0 +1,54 @@
+.chat-box {
+    display: flex;
+    min-width: 700px;
+    /* margin: 25px; */
+    height: 100vh;
+}
+
+.chat-people {
+    flex-grow: 1;
+    flex-basis: 350px;
+    border-right: 1px solid grey;
+}
+
+.chat-messages {
+    flex-grow: 4;
+    flex-basis: 350px;
+}
+
+.header {
+    background-color: #1F6F8B;
+    display: flex;
+    padding: 10px 0 10px 15px;
+}
+
+.header-part1 {
+    flex: 1;
+}
+
+.header-part1 img {
+    border-radius: 100%;
+    width: 50px;
+}
+
+.header-part2 {
+    flex: 4;
+    /* margin-right: auto; */
+    text-align: end;
+}
+
+.header-part2 .MuiFab-root {
+    margin: 5px 10px;
+    background-color: #1F6F8B;
+    box-shadow: none;
+}
+
+.header-part2 .MuiFab-root:hover {
+    background-color: #20647d;
+    box-shadow: none;
+}
+
+.google-logout {
+    color: white;
+    height: 5%;
+}

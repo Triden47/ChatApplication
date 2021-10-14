@@ -4,13 +4,14 @@ import Messenger from './components/Messenger'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AccountProvider, { AccountContext } from './context/AccountProvider';
 import ChatBox from './components/ChatBox';
+import DrawerProvider from './context/DrawerProvider';
 
 const PageChange = () => {
   const { account } = useContext(AccountContext)
-  console.log(account)
+  // console.log(account)
   return (
     <>
-      { account ? <ChatBox/> : <Messenger/> }
+      { account ? <DrawerProvider><ChatBox/></DrawerProvider> : <Messenger/> }
     </>
   )
 }
