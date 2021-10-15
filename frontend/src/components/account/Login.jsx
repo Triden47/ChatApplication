@@ -5,14 +5,15 @@
 import { useContext } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { AccountContext } from '../../context/AccountProvider';
+import { addUser } from '../../api/api';
 
 const Login = () => {
     const clientID = process.env.REACT_APP_GOOGLE_ID
 
     const { setAccount } = useContext(AccountContext)
-    const handleSuccess = (res) => {
+    const handleSuccess = async (res) => {
         setAccount(res.profileObj)
-        // console.log(account)
+        await addUser(res.profileObj)
     }
     const handleFailure = (res) => {
         console.log(res)
