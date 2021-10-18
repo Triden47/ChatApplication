@@ -19,8 +19,16 @@ route.post('/add', async (req, res) => {
         await newUser.save()
         res.status(200).json('User saved successfully')
     } catch(error) {
-        response.status(500).json(error)
+        res.status(500).json(error)
     }
 })
 
+route.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({})
+        res.status(200).json(users)
+    } catch(error) {
+        res.status(500).json(error)
+    }
+})
 export default route
