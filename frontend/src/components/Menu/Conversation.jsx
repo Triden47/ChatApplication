@@ -9,6 +9,8 @@ const Conversation = ({ search }) => {
     // const { account } = useContext(AccountContext)
     const [ users, setUsers ] = useState([])
 
+    const [ bgChange, setBgChange ] = useState('')
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await getUsers()
@@ -23,7 +25,12 @@ const Conversation = ({ search }) => {
         <div>
             {
                 users.map(user => (
-                    <IndividualConversation user={user} key={user.googleId}/>
+                    <IndividualConversation 
+                    user={user} 
+                    key={user.googleId} 
+                    setBgChange={(id) => setBgChange(id)}
+                    bg={bgChange===user.googleId ? "#5b89a3da" : ""}
+                    />
                 ))
             }
         </div>

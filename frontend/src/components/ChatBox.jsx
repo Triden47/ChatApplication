@@ -17,7 +17,7 @@ const ChatBox = () => {
                     <PersistentDrawerLeft/>
                 </div>
                 <div className="chat-messages">
-                    Chat
+                    <Chat/>
                 </div>
             </div>
     )
