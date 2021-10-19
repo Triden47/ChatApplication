@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 
 //components
 import { getUsers } from "../../api/api"
@@ -23,8 +23,7 @@ const Conversation = ({ search }) => {
         <div>
             {
                 users.map(user => (
-                            
-                            <IndividualConversation user={user}/>
+                    <IndividualConversation user={user} key={user.googleId}/>
                 ))
             }
         </div>

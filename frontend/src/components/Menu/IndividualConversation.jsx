@@ -1,13 +1,17 @@
 import { useContext } from 'react'
-import { AccountContext } from "../../context/AccountProvider"
+import { AccountContext } from '../../context/AccountProvider'
+import { UserContext } from '../../context/UserProvider'
+import { setConversation } from '../../api/api.js'
 
-
-export default function IndividualConversation(props) {
+const IndividualConversation = (props) => {
     // console.log(props.user)
 
     const { account } = useContext(AccountContext)
-    const setUser = () => {
-        setConversation({ senderId: account.googleId, receiverId: props.user.googleId })
+    const { setPerson } = useContext(UserContext)
+
+    const setUser = async () => {
+        setPerson(props.user)
+        await setConversation({ senderId: account.googleId, receiverId: props.user.googleId })
     }
 
     return (
@@ -17,3 +21,5 @@ export default function IndividualConversation(props) {
         </div>
     )
 }
+
+export default IndividualConversation

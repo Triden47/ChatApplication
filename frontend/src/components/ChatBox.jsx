@@ -1,13 +1,14 @@
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import '../css/chatBox.css'
 
 //component
 import Menu from './Menu/Menu' 
 import PersistentDrawerLeft from './Menu/Profile'
-import { DrawerContext } from '../context/DrawerProvider'
+// import { DrawerContext } from '../context/DrawerProvider'
+import Chat from './Chat/Chat'
 
 const ChatBox = () => {
-    const { drawer } = useContext(DrawerContext)
+    // const { drawer } = useContext(DrawerContext)
     return (
 
             <div className="chat-box">

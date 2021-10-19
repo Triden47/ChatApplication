@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AccountProvider, { AccountContext } from './context/AccountProvider';
 import ChatBox from './components/ChatBox';
 import DrawerProvider from './context/DrawerProvider';
+import UserProvider from './context/UserProvider'
 
 const PageChange = () => {
   const { account } = useContext(AccountContext)
@@ -20,7 +21,9 @@ function App() {
 
   return (
     <AccountProvider>
+      <UserProvider>
         <PageChange/>
+      </UserProvider>
     </AccountProvider>
   )
 }
