@@ -28,6 +28,7 @@
 
 .header-part1 img {
     border-radius: 100%;
+    cursor: pointer;
     width: 50px;
 }
 

@@ -1,5 +1,6 @@
 import express, { response } from 'express'
 import User from '../model/user.js'
+import Conversation from '../model/conversation.js'
 
 const route = express.Router()
 
@@ -31,4 +32,20 @@ route.get('/users', async (req, res) => {
         res.status(500).json(error)
     }
 })
+
+route.post('/conversation/add', async(req, res) => {
+    let senderId = req.body.senderId
+    let receiverId = req.body.receiverId
+    try {
+        const newConversation = new Conversation({
+            members: [senderId, receiverId]
+        })
+        await newConversation.save()
+        res.save(200).json('Converastion added successfully')
+
+    } catch(error) {
+        res.status(500).json(error)
+    }
+})
+
 export default route
