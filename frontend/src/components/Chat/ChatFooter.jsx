@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Input } from "@mui/material";
+import { useState, forwardRef } from 'react'
+import { IconButton, Input } from "@mui/material";
 import { styled } from "@mui/system";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import SendIcon from "@mui/icons-material/Send";
@@ -31,31 +31,44 @@ const StyledInputElement = styled("input")(`
   }
 `);
 
-const CustomInput = React.forwardRef(function CustomInput(props, ref) {
+const CustomInput = forwardRef(function CustomInput(props, ref) {
     return (
         <Input
             components={{ Input: StyledInputElement }}
+            aria-label="Demo input"
+            placeholder="Type something..."
             disableUnderline={true}
-            fullWidth={true}
-            {...props}
+            // fullWidth={true}
+            sx={{ width: "90%" }}
             ref={ref}
+            onChange={ props.handleChange }
+            value={ props.value }
         />
     );
 });
 
-function UnstyledInput() {
-    return (
-        <CustomInput aria-label="Demo input" placeholder="Type something..." />
-    );
-}
-
 const ChatFooter = () => {
+
+    const [ text, setText ] = useState('')
+    const [ change, setChange ] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setText(change)
+        // console.log(text)
+        //Text contains the text entered by the person
+        setChange('')        
+    }
+
     return (
         <div className="chat-footer">
             <EmojiEmotionsIcon sx={{ color: "#1F6F8B", margin: "5px" }} />
             <AttachFileIcon sx={{ color: "#1F6F8B", margin: "5px" }} />
-            <UnstyledInput />
-            <SendIcon sx={{ color: "#1F6F8B", margin: "5px" }} />
+            <form onSubmit={ handleSubmit } style={{ width: "100%"}}>
+                <CustomInput handleChange={(e) => { setChange(e.target.value)
+                console.log(change) }} value={ change }/>
+                {change.length >= 1 && <IconButton sx={{ margin: "5px" }}><SendIcon sx={{ color: "#1F6F8B" }} /></IconButton>}
+            </form>
         </div>
     );
 };
