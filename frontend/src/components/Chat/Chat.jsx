@@ -9,7 +9,7 @@ import { UserContext } from '../../context/UserProvider'
 
 const Chat = () => {
     const { person } = useContext(UserContext)
-    console.log(person)
+    // console.log(person)
     return (
         <div>
             {Object.keys(person).length !== 0 && 

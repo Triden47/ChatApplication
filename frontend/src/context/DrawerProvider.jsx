@@ -5,7 +5,7 @@ export const DrawerContext = createContext(null)
 const DrawerProvider = ({ children }) => {
 
     const [drawer, setDrawer] = useState(false)
-    console.log(drawer)
+    // console.log(drawer)
 
     return (
         <DrawerContext.Provider value={{

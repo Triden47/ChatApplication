@@ -55,4 +55,15 @@ route.post('/conversation/add', async(req, res) => {
     }
 })
 
+route.post('/conversation', async (req, res) => {
+    try {
+        const conversation = await Conversation.findOne({ members: { $all: [ req.body.sender, req.body.receiver ] } })
+
+        res.status(200).json(conversation)
+
+    } catch(error) {
+        response.status(500).json(error)
+    }
+})
+
 export default route

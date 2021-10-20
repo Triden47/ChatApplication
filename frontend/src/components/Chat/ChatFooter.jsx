@@ -35,8 +35,8 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
     return (
         <Input
             components={{ Input: StyledInputElement }}
-            disableUnderline="true"
-            fullWidth="true"
+            disableUnderline={true}
+            fullWidth={true}
             {...props}
             ref={ref}
         />
