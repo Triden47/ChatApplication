@@ -8,7 +8,7 @@ import { UserContext } from "../../context/UserProvider"
 
 const ChatHeader = () => {
     const { person } = useContext(UserContext)
-    const [status, setStatus] = useState(false)
+    // const [status, setStatus] = useState(false)
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);

@@ -5,13 +5,13 @@
     height: 100vh;
 }
 
-.chat-people {
+.people {
     flex-grow: 1;
     flex-basis: 350px;
     border-right: 1px solid grey;
 }
 
-.chat-messages {
+.messages {
     flex-grow: 4;
     flex-basis: 350px;
 }
@@ -87,6 +87,7 @@
     display: flex;
     padding: 10px 0 10px 15px;
     height: 10vh;
+    min-height: 70px;
 }
 
 .char-header .part1 {
@@ -117,11 +118,26 @@
 }
 
 .chat-messages {
-    height: 90vh;
+    height: 80vh;
     overflow: hidden;
+    position: relative;
 }
 .chat-messages > img {
     width: 100%;
-    object-fit: fill;
-    
+    object-fit: cover;
+    /* min-width: 40%; */
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    filter:invert(0.25);
+}
+
+.chat-footer {
+    height: 10vh;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

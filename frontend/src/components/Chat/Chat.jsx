@@ -13,7 +13,7 @@ const Chat = () => {
     return (
         <div>
             {Object.keys(person).length !== 0 && 
-            <div>
+            <div style={{ minWidth: "500px" }}>
                 <ChatHeader/>
                 <Messages/>
                 <ChatFooter/>

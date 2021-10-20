@@ -12,11 +12,11 @@ const ChatBox = () => {
     return (
 
             <div className="chat-box">
-                <div className="chat-people">
+                <div className="people">
                     <Menu />
                     <PersistentDrawerLeft/>
                 </div>
-                <div className="chat-messages">
+                <div className="messages">
                     <Chat/>
                 </div>
             </div>
