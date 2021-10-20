@@ -63,6 +63,7 @@
 
 }
 
+
 .conversation img {
     border-radius: 100%;
     width: 60px;
@@ -85,6 +86,7 @@
     background-color: #1F6F8B;
     display: flex;
     padding: 10px 0 10px 15px;
+    height: 10vh;
 }
 
 .char-header .part1 {
@@ -112,4 +114,14 @@
 .chat-header .part2 .MuiFab-root:hover {
     background-color: #20647d;
     box-shadow: none;
+}
+
+.chat-messages {
+    height: 90vh;
+    overflow: hidden;
+}
+.chat-messages > img {
+    width: 100%;
+    object-fit: fill;
+    
 }

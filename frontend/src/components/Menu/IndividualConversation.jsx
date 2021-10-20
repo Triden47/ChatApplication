@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { AccountContext } from '../../context/AccountProvider'
 import { UserContext } from '../../context/UserProvider'
 import { setConversation } from '../../api/api.js'

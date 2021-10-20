@@ -1,8 +1,10 @@
 
+import ChatBg from '../../images/ChatBg.jpg'
 const Messages = () => {
     return (
-        <div>
-            Message
+        <div className="chat-messages">
+            <img src={ChatBg} alt="No bg"/>
+            Messages
         </div>
     )
 }
