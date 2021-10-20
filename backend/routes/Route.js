@@ -1,6 +1,7 @@
 import express, { response } from 'express'
 import User from '../model/user.js'
 import Conversation from '../model/conversation.js'
+import Message from '../model/message.js'
 
 const route = express.Router()
 
@@ -66,4 +67,14 @@ route.post('/conversation', async (req, res) => {
     }
 })
 
+route.post('/message/add', async (req, res) => {
+    const newMessage = new Message(req.body)
+    try {
+        await newMessage.save()
+
+        response.status(200).json('Message saved successfully')
+    } catch(error) {
+        response.status(500).json(error)
+    }
+})
 export default route

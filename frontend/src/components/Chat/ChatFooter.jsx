@@ -1,9 +1,13 @@
-import { useState, forwardRef } from 'react'
+import { useState, useEffect, useContext, forwardRef } from 'react'
 import { IconButton, Input } from "@mui/material";
 import { styled } from "@mui/system";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
+
+
+import { newMessage } from '../../api/api';
+import { AccountContext } from '../../context/AccountProvider';
 // import MicIcon from '@mui/icons-material/Mic'
 
 const StyledInputElement = styled("input")(`
@@ -39,7 +43,7 @@ const CustomInput = forwardRef(function CustomInput(props, ref) {
             placeholder="Type something..."
             disableUnderline={true}
             // fullWidth={true}
-            sx={{ width: "90%" }}
+            sx={{ width: "85%" }}
             ref={ref}
             onChange={ props.handleChange }
             value={ props.value }
@@ -47,7 +51,9 @@ const CustomInput = forwardRef(function CustomInput(props, ref) {
     );
 });
 
-const ChatFooter = () => {
+const ChatFooter = (props) => {
+
+    const { account } = useContext(AccountContext)
 
     const [ text, setText ] = useState('')
     const [ change, setChange ] = useState('')
@@ -55,19 +61,26 @@ const ChatFooter = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setText(change)
-        // console.log(text)
+        // console.log(change)
         //Text contains the text entered by the person
+        
         setChange('')        
     }
 
+    useEffect(() => {
+        const sendNewMessage = async () => {
+            await newMessage({ conversationId: props.conversationId._id, sender: account.googleId, text: text })
+        }
+        sendNewMessage()
+    }, [text])
+
     return (
         <div className="chat-footer">
-            <EmojiEmotionsIcon sx={{ color: "#1F6F8B", margin: "5px" }} />
-            <AttachFileIcon sx={{ color: "#1F6F8B", margin: "5px" }} />
+            <EmojiEmotionsIcon sx={{ color: "#1F6F8B", margin: "10px 10px 10px 20px" }} />
+            <AttachFileIcon sx={{ color: "#1F6F8B", margin: "10px" }} />
             <form onSubmit={ handleSubmit } style={{ width: "100%"}}>
-                <CustomInput handleChange={(e) => { setChange(e.target.value)
-                console.log(change) }} value={ change }/>
-                {change.length >= 1 && <IconButton sx={{ margin: "5px" }}><SendIcon sx={{ color: "#1F6F8B" }} /></IconButton>}
+                <CustomInput handleChange={(e) => { setChange(e.target.value)}} value={ change }/>
+                {change.length >= 1 && <IconButton type="submit" sx={{ margin: "10px" }}><SendIcon sx={{ color: "#1F6F8B" }} /></IconButton>}
             </form>
         </div>
     );

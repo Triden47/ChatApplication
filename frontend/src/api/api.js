@@ -23,7 +23,7 @@ export const setConversation = async (data) => {
     try {
         await axios.post(`${url}/conversation/add`, data)
     } catch(error) {
-        console.log('Error while calling getConversation api', error)
+        console.log('Error while calling setConversation api', error)
     }
 }
 
@@ -33,5 +33,14 @@ export const getConversation = async (data) => {
         return conversation.data
     } catch(error) {
         console.log('Error while calling getConversation api', error)
+    }
+}
+
+export const newMessage = async (data) => {
+    try {
+        // console.log(data)
+        await axios.post(`${url}/message/add`, data)
+    } catch(error) {
+        console.log('Error while calling newMessage api', error)
     }
 }

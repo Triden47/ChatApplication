@@ -7,9 +7,9 @@ import { AccountContext } from '../../context/AccountProvider'
 import { getConversation } from '../../api/api'
 
 
-const Messages = () => {
+const Messages = (props) => {
 
-    const { currentConversation, setCurrentConversation } = useState({})
+    // const { currentConversation, setCurrentConversation } = useState({})
 
     const { account } = useContext(AccountContext)
     const { person } = useContext(UserContext)
@@ -17,7 +17,8 @@ const Messages = () => {
     useEffect(() => {
         const getConversationDetails = async () => {
             const data = await getConversation({ sender: account.googleId, receiver: person.googleId })
-            console.log(data)
+            props.setConversationId(data)
+            // console.log(data)
             // setCurrentConversation(data)
         }
         getConversationDetails()
