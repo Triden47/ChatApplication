@@ -37,7 +37,7 @@ route.get('/users', async (req, res) => {
 route.post('/conversation/add', async (req, res) => {
     let senderId = req.body.senderId
     let receiverId = req.body.receiverId
-    console.log(req.body)
+    // console.log(req.body)
     try {
         const exist = await Conversation.findOne({ members: { $all: [ receiverId, senderId ]}})
 
@@ -80,4 +80,12 @@ route.post('/message/add', async (req, res) => {
     }
 })
 
+route.get('/message/get/:id', async (req, res) => {
+    try {
+        const messages = await Message.find({ conversationId: req.params.id })
+        res.status(200).json(messages)
+    } catch(error) {
+        res.status(500).json(error)
+    }
+})
 export default route

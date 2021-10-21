@@ -121,6 +121,8 @@
     height: 80vh;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .chat-messages > img {
     width: 100%;
@@ -132,6 +134,32 @@
     right: 0;
     z-index: -1;
     filter:invert(0.25);
+}
+
+.message {
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 7.5px;
+    padding-right: 35px;
+    margin: 1px 10px 1px 10px;
+    max-width: 60%;
+    /* z-index: 1; */
+    word-wrap: break-word;
+    position: relative;
+}
+
+.message > h5 {
+    /* display: inline; */
+    margin-bottom: 0;
+}
+.message > p {
+    margin-bottom: 0;
+    /* display: inline; */
+    font-size: 0.1rem;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
 }
 
 .chat-footer {
