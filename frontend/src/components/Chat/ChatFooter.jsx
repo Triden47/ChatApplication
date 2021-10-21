@@ -18,6 +18,7 @@ const StyledInputElement = styled("input")(`
     line-height: 1.4375em;
     background: rgb(243, 246, 249);
     border: 1px solid #E5E8EC;
+    margin: 10px;
 
     padding: 6px 10px;
     color: #1F6F8B;
@@ -58,6 +59,8 @@ const ChatFooter = (props) => {
     const [ text, setText ] = useState('')
     const [ change, setChange ] = useState('')
 
+    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setText(change)
@@ -66,6 +69,31 @@ const ChatFooter = (props) => {
         
         setChange('')        
     }
+
+    //Draft messages not working properly
+    // const [ draft, setDraft ] = useState({})
+    // useEffect(() => {
+    //     setDraft((prev) => {
+    //         return (
+    //             {
+    //                 ...prev,
+    //                 [props.conversationId._id]: change,
+    //             }
+    //         )
+    //     })
+    //     // console.log(draft)
+    //     // console.log(props.conversationId._id)
+    // }, [change])
+
+    // useEffect(() => {
+    //     // console.log(props.conversationId._id)
+    //     if(props.conversationId._id in draft)
+    //         setChange(draft[props.conversationId._id])
+    //     else {
+    //         draft[props.conversationId._id] = ''
+    //         setChange('')
+    //     }
+    // }, [props.conversationId._id])
 
     useEffect(() => {
         const sendNewMessage = async () => {
@@ -79,7 +107,7 @@ const ChatFooter = (props) => {
             <EmojiEmotionsIcon sx={{ color: "#1F6F8B", margin: "10px 10px 10px 20px" }} />
             <AttachFileIcon sx={{ color: "#1F6F8B", margin: "10px" }} />
             <form onSubmit={ handleSubmit } style={{ width: "100%"}}>
-                <CustomInput handleChange={(e) => { setChange(e.target.value)}} value={ change }/>
+                <CustomInput handleChange={(e) => { setChange(e.target.value)} } value={ change }/>
                 {change.length >= 1 && <IconButton type="submit" sx={{ margin: "10px" }}><SendIcon sx={{ color: "#1F6F8B" }} /></IconButton>}
             </form>
         </div>

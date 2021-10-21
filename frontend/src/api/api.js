@@ -22,6 +22,7 @@ export const getUsers = async () => {
 export const setConversation = async (data) => {
     try {
         await axios.post(`${url}/conversation/add`, data)
+
     } catch(error) {
         console.log('Error while calling setConversation api', error)
     }
@@ -29,7 +30,7 @@ export const setConversation = async (data) => {
 
 export const getConversation = async (data) => {
     try {
-        let conversation = await axios.post(`${url}/conversation`, data)
+        let conversation = await axios.post(`${url}/conversation/get`, data)
         return conversation.data
     } catch(error) {
         console.log('Error while calling getConversation api', error)

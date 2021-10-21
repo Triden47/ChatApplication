@@ -34,9 +34,10 @@ route.get('/users', async (req, res) => {
     }
 })
 
-route.post('/conversation/add', async(req, res) => {
+route.post('/conversation/add', async (req, res) => {
     let senderId = req.body.senderId
     let receiverId = req.body.receiverId
+    console.log(req.body)
     try {
         const exist = await Conversation.findOne({ members: { $all: [ receiverId, senderId ]}})
 
@@ -56,14 +57,15 @@ route.post('/conversation/add', async(req, res) => {
     }
 })
 
-route.post('/conversation', async (req, res) => {
+route.post('/conversation/get', async (req, res) => {
     try {
+        // console.log(req.body)
         const conversation = await Conversation.findOne({ members: { $all: [ req.body.sender, req.body.receiver ] } })
 
         res.status(200).json(conversation)
 
     } catch(error) {
-        response.status(500).json(error)
+        res.status(500).json(error)
     }
 })
 
@@ -72,9 +74,10 @@ route.post('/message/add', async (req, res) => {
     try {
         await newMessage.save()
 
-        response.status(200).json('Message saved successfully')
+        res.status(200).json('Message saved successfully')
     } catch(error) {
-        response.status(500).json(error)
+        res.status(500).json(error)
     }
 })
+
 export default route
