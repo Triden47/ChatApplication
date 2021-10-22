@@ -10,7 +10,7 @@ const io = new Server(PORT, {
 
 let users = []
 const addUser = (userId, socketId) => {
-    !users.some(user => user.userId === userId) && users.push( userId, socketId )
+    !users.some(user => user.userId === userId) && users.push({ userId, socketId })
 
 }
 
@@ -19,6 +19,7 @@ io.on('connection', (socket) => {
 
     socket.on('addUser', userId => {
         addUser(userId, socket.id)
+        // console.log(userId)
         io.emit('getUsers', users)
     })
 })
