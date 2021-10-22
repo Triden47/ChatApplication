@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 //components
 import { getUsers } from "../../api/api"
-// import { AccountContext } from '../../context/AccountProvider'
+import { AccountContext } from '../../context/AccountProvider'
 import IndividualConversation from './IndividualConversation'
 
 const Conversation = ({ search }) => {
-    // const { account } = useContext(AccountContext)
+    const { account, socket, setActiveUsers } = useContext(AccountContext)
     const [ users, setUsers ] = useState([])
 
     const [ bgChange, setBgChange ] = useState('')
@@ -21,6 +21,12 @@ const Conversation = ({ search }) => {
         fetchData()
     }, [search])
 
+    useEffect(() => {
+        socket.current.emit('addUser', account.googleId)
+        socket.current.on('getUsers', users => {
+             setActiveUsers(users)
+        })
+    })
     return (
         <div>
             {

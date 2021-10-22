@@ -4,11 +4,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SearchIcon from '@mui/icons-material/Search';
 //components
 import { UserContext } from "../../context/UserProvider"
+import { AccountContext } from "../../context/AccountProvider";
 
 
 const ChatHeader = () => {
     const { person } = useContext(UserContext)
     // const [status, setStatus] = useState(false)
+    const { activeUsers } = useContext(AccountContext)
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -19,16 +21,19 @@ const ChatHeader = () => {
         setAnchorEl(null);
     };
 
-    return (
-        // <div className="chat-header">
-        //     <img src={person.imageUrl} alt="No dp"/>
-        //     <p>{status ? "online" : "offline"}</p>
-        // </div>
+    return ( 
         <div className="chat-header">
-            <div className="part1">
+            <div className="chat-header-part1">
                 <img src={ person.imageUrl } alt="No dp"/>
             </div>
-            <div className="part2">
+
+            <div className="chat-header-part2">
+                    <h3>{ person.givenName }</h3>
+                    <p>
+                    {activeUsers?.find(user => user.userId === person.googleId) ? "Online" : "Offline"}
+                    </p>
+            </div>
+            <div className="chat-header-part3">
                 <Fab size="small">
                     <SearchIcon/>
                 </Fab>
