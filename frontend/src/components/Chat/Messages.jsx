@@ -20,6 +20,7 @@ const Messages = (props) => {
         const getConversationDetails = async () => {
             const data = await getConversation({ sender: account.googleId, receiver: person.googleId })
             setConversation(data)
+            // console.log(conversation)
             props.setConversationId(data)        
         }
         getConversationDetails()
@@ -28,21 +29,24 @@ const Messages = (props) => {
     useEffect(() => {
         const getMessageDetails = async () => {
             const messageData = await getMessage(conversation._id)
+            // console.log(messageData)
             setMessages(messageData.data)
         }
         getMessageDetails()
     }, [conversation?._id])
     
     return (
-        <div className="chat-messages">
+        <div className="chat-msg">
             <img src={ChatBg} alt="No bg"/>
+            <div className="chat-messages">
             {
-                messages && messages.map(message => (
-                    <div>
+                messages && messages.slice(0).reverse().map(message => (
+                    <div key={message._id}>
                         <Message message={message}/>
                     </div>
                 ))
             }
+            </div>
         </div>
     )
 }

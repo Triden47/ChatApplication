@@ -26,11 +26,13 @@ const Conversation = ({ search }) => {
         socket.current.on('getUsers', users => {
              setActiveUsers(users)
         })
-    })
+    }, [account])
+    
     return (
         <div>
             {
                 users.map(user => (
+                    user.googleId !== account.googleId &&
                     <IndividualConversation 
                     user={user} 
                     key={user.googleId} 

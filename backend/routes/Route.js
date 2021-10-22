@@ -37,12 +37,10 @@ route.get('/users', async (req, res) => {
 route.post('/conversation/add', async (req, res) => {
     let senderId = req.body.senderId
     let receiverId = req.body.receiverId
-    // console.log(req.body)
     try {
-        const exist = await Conversation.findOne({ members: { $all: [ receiverId, senderId ]}})
-
+        const exist = await Conversation.findOne({ members: { $all: [ senderId, receiverId ]}})
         if(exist) {
-            console.log('Conversation already exists')
+            res.status(200).json('Conversation already exists')
             return
         }
 
@@ -59,9 +57,8 @@ route.post('/conversation/add', async (req, res) => {
 
 route.post('/conversation/get', async (req, res) => {
     try {
-        // console.log(req.body)
         const conversation = await Conversation.findOne({ members: { $all: [ req.body.sender, req.body.receiver ] } })
-
+        // console.log(conversation)
         res.status(200).json(conversation)
 
     } catch(error) {

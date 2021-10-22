@@ -19,6 +19,7 @@ const AccountProvider = ({ children }) => {
             account,
             setAccount,
             socket,
+            activeUsers,
             setActiveUsers
         }}
         >
