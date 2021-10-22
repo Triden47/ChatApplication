@@ -9,17 +9,31 @@ const io = new Server(PORT, {
 })
 
 let users = []
+
 const addUser = (userId, socketId) => {
     !users.some(user => user.userId === userId) && users.push({ userId, socketId })
 
 }
 
+const getUser = (userId) => {
+    return users.find(user => user.userId === userId)
+}
+
 io.on('connection', (socket) => {
     console.log('User Connected')
 
+    //Connect
     socket.on('addUser', userId => {
         addUser(userId, socket.id)
-        // console.log(userId)
         io.emit('getUsers', users)
+        console.log(users)
+    })
+
+    //Send Messages
+    socket.on('sendMessage', ({ senderId, receiverId, text }) => {
+        const user = getUser(receiverId)
+        console.log(text)
+        io.to(user.socketId).emit('getMessage', { senderId, text })
     })
 })
+

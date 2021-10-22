@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, forwardRef } from 'react'
+import { useState, useEffect, useContext, useRef, forwardRef } from 'react'
 import { IconButton, Input } from "@mui/material";
 import { styled } from "@mui/system";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
@@ -8,7 +8,18 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 import { newMessage } from '../../api/api';
 import { AccountContext } from '../../context/AccountProvider';
+import { UserContext } from '../../context/UserProvider';
 // import MicIcon from '@mui/icons-material/Mic'
+
+//User defined useEffect that does not trigger on first render
+const useDidMountEffect = (func, deps) => {
+    const didMount = useRef(false);
+
+    useEffect(() => {
+        if (didMount.current) func();
+        else didMount.current = true;
+    }, deps);
+}
 
 const StyledInputElement = styled("input")(`
     width: 100%;
@@ -54,17 +65,21 @@ const CustomInput = forwardRef(function CustomInput(props, ref) {
 
 const ChatFooter = (props) => {
 
-    const { account } = useContext(AccountContext)
+    const { account, socket, newMessageFlag, setNewMessageFlag } = useContext(AccountContext)
 
     const [ text, setText ] = useState('')
     const [ change, setChange ] = useState('')
 
-    
+    // Receiver from conversation collection is to be sent
+    const receiverId = props.conversationId?.members?.find(member => member !== account.googleId)
 
+    // const textSave = () => {
+        
+    // }
     const handleSubmit = (e) => {
         e.preventDefault()
         setText(change)
-        // console.log(change)
+        // textSave()
         //Text contains the text entered by the person
         
         setChange('')        
@@ -95,11 +110,21 @@ const ChatFooter = (props) => {
     //     }
     // }, [props.conversationId._id])
 
-    useEffect(() => {
+    useDidMountEffect(() => {
+        // console.log(text)
         const sendNewMessage = async () => {
             await newMessage({ conversationId: props.conversationId._id, sender: account.googleId, text: text })
         }
         sendNewMessage()
+
+        socket.current.emit('sendMessage', {
+            senderId: account.googleId,
+            receiverId: receiverId,
+            text: text
+        })
+
+        setNewMessageFlag(prev => !prev)
+        
     }, [text])
 
     return (

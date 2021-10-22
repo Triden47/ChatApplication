@@ -9,12 +9,13 @@ import  Message from './Message'
 
 const Messages = (props) => {
 
-    const { account } = useContext(AccountContext)
+    const { account, socket, newMessageFlag } = useContext(AccountContext)
     const { person } = useContext(UserContext)
 
     const [ conversation, setConversation ] = useState({})
 
     const [ messages, setMessages ] = useState([])
+    const [ latestMessage, setLatestMessage ] = useState(null)
 
     useEffect(() => {
         const getConversationDetails = async () => {
@@ -33,7 +34,21 @@ const Messages = (props) => {
             setMessages(messageData.data)
         }
         getMessageDetails()
-    }, [conversation?._id])
+    }, [conversation?._id, person.googleId, newMessageFlag])
+
+    useEffect(() => {
+        socket.current.on('getMessage', data => {
+            setLatestMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now()
+            })
+        })
+    }, [])
+
+    useEffect(() => {
+        latestMessage && conversation?.members?.includes(latestMessage.sender) && setMessages(prev => [...prev, latestMessage])
+    }, [latestMessage])
     
     return (
         <div className="chat-msg">
