@@ -70,6 +70,7 @@ route.post('/message/add', async (req, res) => {
     const newMessage = new Message(req.body)
     try {
         await newMessage.save()
+        await Conversation.findByIdAndUpdate(req.body.conversationId, { message: req.body.text })
 
         res.status(200).json('Message saved successfully')
     } catch(error) {

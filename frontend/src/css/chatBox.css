@@ -82,6 +82,20 @@
     left: 100px;
 }
 
+.conversation h6 {
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    color: rgba(48, 48, 48, 0.972);
+}
+
+.conversation p {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 0.8em;
+}
+
 .chat-header {
     background-color: #1F6F8B;
     display: flex;
@@ -169,8 +183,8 @@
     border-radius: 5px;
     display: inline-block;
     padding: 7.5px;
-    padding-right: 35px;
-    margin: 1px 10px 1px 10px;
+    padding-right: 40px;
+    margin: 1px 50px 1px 50px;
     max-width: 60%;
     /* z-index: 1; */
     word-wrap: break-word;
